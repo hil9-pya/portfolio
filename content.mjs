@@ -1,7 +1,7 @@
 export const profile = {
   name: 'Ariel Casipe',
   github: 'hil9-pya',
-  photo: 'assets/ariel-cutout.png',
+  photo: 'assets/ariel.png',
   intro: 'BSIT student exploring full-stack development.',
 };
 
