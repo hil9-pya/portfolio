@@ -54,7 +54,7 @@ export const projects = [
 
 export const stack = [
   { group: 'Frontend', items: [['HTML', 'html5'], ['CSS', 'css'], ['JavaScript', 'javascript'], ['TypeScript', 'typescript'], ['React', 'react'], ['Vue.js', 'vuedotjs'], ['Tailwind CSS', 'tailwindcss'], ['Vite', 'vite']] },
-  { group: 'Backend', items: [['JavaScript', 'javascript'], ['Node.js', 'nodedotjs'], ['Express', 'express'], ['MongoDB', 'mongodb'], ['PHP', 'php'], ['MySQL', 'mysql']] },
+  { group: 'Backend', items: [['JavaScript', 'javascript'], ['Python', 'python'], ['C++', 'cplusplus'], ['Java', 'java'], ['Node.js', 'nodedotjs'], ['Express', 'express'], ['MongoDB', 'mongodb'], ['PHP', 'php'], ['MySQL', 'mysql']] },
   { group: 'Tools', items: [['Git', 'git'], ['GitHub', 'github'], ['Antigravity', 'antigravity'], ['Kimi', 'kimi']] },
 ];
 
