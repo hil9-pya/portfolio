@@ -24,7 +24,9 @@ h1,h2,h3,p{margin:0}
 .theme-toggle{display:flex;gap:9px;align-items:center;padding:7px 10px;color:var(--muted);font-size:12px}
 .theme-toggle:hover{color:var(--ink)}
 .display-controls{display:flex;align-items:center;gap:12px}
-.motion-toggle{font-size:12px;color:var(--muted);padding:7px 10px}
+.portrait-group{position:relative;flex:0 0 auto}
+.motion-toggle{position:absolute;right:-36px;bottom:40px;width:28px;height:28px;padding:5px;display:grid;place-items:center;color:var(--muted);border:1px solid var(--line);border-radius:50%}
+.motion-toggle svg{width:14px;height:14px}
 .motion-toggle:hover{color:var(--ink)}
 .motion-paused .portrait-wrap,.motion-paused .card-back{animation-play-state:paused!important}
 .skip-link{position:fixed;top:10px;left:10px;transform:translateY(-180%);background:var(--ink);color:var(--bg);padding:8px 14px;z-index:10}

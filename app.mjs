@@ -8,7 +8,10 @@ let manualTheme = null;
 document.querySelector('.motion-toggle').addEventListener('click', event => {
   const paused = document.documentElement.classList.toggle('motion-paused');
   event.currentTarget.setAttribute('aria-pressed', String(paused));
-  event.currentTarget.textContent = paused ? 'Resume motion' : 'Pause motion';
+  const label = paused ? 'Resume motion' : 'Pause motion';
+  event.currentTarget.setAttribute('aria-label', label);
+  event.currentTarget.title = label;
+  event.currentTarget.querySelector('path').setAttribute('d', paused ? 'M9 5l10 7-10 7Z' : 'M9 6v12M15 6v12');
 });
 try {
   const stored = localStorage.getItem('portfolio-theme');
