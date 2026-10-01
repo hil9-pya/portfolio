@@ -1,0 +1,5 @@
+output/
+.superpowers/
+__pycache__/
+docs/superpowers/
+design-previews/
