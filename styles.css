@@ -25,7 +25,8 @@ h1,h2,h3,p{margin:0}
 .theme-toggle:hover{color:var(--ink)}
 .skip-link{position:fixed;top:10px;left:10px;transform:translateY(-180%);background:var(--ink);color:var(--bg);padding:8px 14px;z-index:10}
 .skip-link:focus{transform:none}
-.intro{display:flex;justify-content:space-between;align-items:center;padding:74px 58px 66px 0;gap:48px}
+.intro{display:flex;justify-content:flex-start;align-items:center;padding:74px 58px 66px 0;gap:64px}
+.intro-copy{flex:0 1 660px;min-width:0}
 .section-label{font-family:'Geist Pixel','Geist Mono',monospace;font-size:14px;color:var(--muted);margin-bottom:17px}
 h1{font-size:64px;letter-spacing:-3px;line-height:1.05;font-weight:600}
 .intro-text{font-size:21px;margin-top:19px;line-height:1.5}
