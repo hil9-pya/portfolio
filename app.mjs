@@ -173,6 +173,8 @@ async function loadContributions() {
     const firstActiveDay = data.days.findIndex(day => Number.isInteger(day.count) ? day.count > 0 : day.level > 0);
     const rows = firstActiveDay < 0 ? '<tr><td colspan="2">No contributions recorded in this period.</td></tr>' : data.days.slice(firstActiveDay).map(day => `<tr><td>${escape(day.date)}</td><td>${escape(Number.isInteger(day.count) ? day.count : `Activity level ${day.level} of 4`)}</td></tr>`).join('');
     target.innerHTML = `<div class="contribution-scroll"><div class="contribution-grid" role="img" aria-label="GitHub contribution activity for ${escape(profile.github)}" style="--weeks:${Math.ceil((data.days.length + firstDay) / 7)}">${cells}</div></div><div class="contribution-meta"><span>${escape(data.summary || 'Public GitHub contribution activity')}</span><span>Snapshot · ${contributions.capturedAt}</span></div><details class="activity-details"><summary>Activity details</summary><div class="activity-table-wrap"><table><caption>Daily contributions for @${escape(profile.github)}</caption><thead><tr><th scope="col">Date</th><th scope="col">Contributions</th></tr></thead><tbody>${rows}</tbody></table></div></details>`;
+    const scroller = target.querySelector('.contribution-scroll');
+    scroller.scrollLeft = scroller.scrollWidth;
   } catch {
     target.innerHTML = `<div class="activity-unavailable"><p>Contribution activity unavailable.</p>${link(contributions.profile, 'View activity on GitHub')}</div>`;
   }

@@ -154,6 +154,14 @@ try {
     }
     console.log('PASS: independent galleries, wraparound, dots, keyboard dialog/focus, theme persistence, light default, storage/data/image fallbacks, dock clearance, reduced motion');
   }
+  const mobile = await browser.newPage({ viewport: { width: 390, height: 844 } });
+  await mobile.goto('http://127.0.0.1:4381');
+  await mobile.waitForSelector('.contribution-scroll');
+  assert(await mobile.locator('.contribution-scroll').evaluate(node =>
+    node.scrollLeft > 0 && Math.abs(node.scrollWidth - node.clientWidth - node.scrollLeft) <= 1));
+  await mobile.locator('.contribution-scroll').evaluate(node => { node.scrollLeft = 0; });
+  assert.equal(await mobile.locator('.contribution-scroll').evaluate(node => node.scrollLeft), 0);
+  await mobile.close();
   assert.deepEqual(errors, []);
   console.log('PASS: desktop layout, four equal project slots, five resources, honest destinations');
 } finally {
