@@ -2,7 +2,7 @@ export const profile = {
   name: 'Ariel Casipe',
   github: 'hil9-pya',
   photo: 'assets/ariel.png',
-  intro: 'BSIT student exploring full-stack development.',
+  intro: 'Aspiring software developer with a soft spot for thoughtful UI/UX. I build web apps and get absorbed in refining the details that make them feel intuitive.',
 };
 
 export const projects = [
