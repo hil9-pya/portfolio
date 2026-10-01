@@ -21,6 +21,11 @@ try {
   await page.getByRole('button', { name: 'Pause motion', exact: true }).click();
   assert.equal(await page.locator('.portrait-wrap').evaluate(node => getComputedStyle(node).animationPlayState), 'paused');
   await page.getByRole('button', { name: 'Resume motion', exact: true }).click();
+  await page.evaluate(() => scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' }));
+  await page.waitForFunction(() => !document.querySelector('.intro-copy').classList.contains('is-visible'));
+  await page.evaluate(() => scrollTo({ top: 0, behavior: 'instant' }));
+  await page.waitForFunction(() => document.querySelector('.intro-copy').classList.contains('is-visible'));
+  await page.waitForFunction(() => getComputedStyle(document.querySelector('.intro-copy')).opacity === '1');
   assert.deepEqual(await page.locator('.dock a').allTextContents(), ['Me', 'Projects', 'Stack', 'Resources', 'GitHub']);
   assert.equal(await page.locator('.project-card').count(), 4);
   assert.equal(await page.locator('[data-status="upcoming"]').count(), 0);

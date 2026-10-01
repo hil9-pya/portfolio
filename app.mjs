@@ -180,9 +180,7 @@ await loadContributions();
 if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
   const revealObserver = new IntersectionObserver(entries => {
     for (const entry of entries) {
-      if (!entry.isIntersecting) continue;
-      entry.target.classList.add('is-visible');
-      revealObserver.unobserve(entry.target);
+      entry.target.classList.toggle('is-visible', entry.isIntersecting);
     }
   }, { threshold: .08 });
   document.querySelectorAll('.intro-copy,.portrait-wrap,.section-heading,.project-card,.stack-group,.resource-grid article,.github-heading,[data-contributions]').forEach((element, index) => {
