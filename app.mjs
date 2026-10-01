@@ -5,13 +5,12 @@ const icon = name => `<svg aria-hidden="true"><use href="assets/icons.svg#${name
 const link = (href, label, className = '') => `<a class="text-link ${className}" href="${escape(href)}" target="_blank" rel="noopener noreferrer">${escape(label)} <span aria-hidden="true">↗</span></a>`;
 
 let manualTheme = null;
-document.querySelector('.motion-toggle').addEventListener('click', event => {
+document.querySelector('[data-portrait]').addEventListener('click', event => {
   const paused = document.documentElement.classList.toggle('motion-paused');
   event.currentTarget.setAttribute('aria-pressed', String(paused));
   const label = paused ? 'Resume motion' : 'Pause motion';
   event.currentTarget.setAttribute('aria-label', label);
-  event.currentTarget.title = label;
-  event.currentTarget.querySelector('path').setAttribute('d', paused ? 'M9 5l10 7-10 7Z' : 'M9 6v12M15 6v12');
+  event.currentTarget.title = `Click to ${label.toLowerCase()}`;
 });
 try {
   const stored = localStorage.getItem('portfolio-theme');

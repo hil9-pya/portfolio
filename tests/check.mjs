@@ -18,9 +18,11 @@ try {
   assert(await page.locator('.intro-copy').evaluate(node => node.classList.contains('is-visible')));
   await page.waitForFunction(() => document.querySelector('.portrait-wrap').classList.contains('is-visible'));
   assert.equal(await page.locator('.portrait-wrap').evaluate(node => getComputedStyle(node).animationIterationCount), 'infinite');
-  await page.getByRole('button', { name: 'Pause motion', exact: true }).click();
+  await page.getByRole('button', { name: 'Pause motion', exact: true }).click({ force: true });
   assert.equal(await page.locator('.portrait-wrap').evaluate(node => getComputedStyle(node).animationPlayState), 'paused');
-  await page.getByRole('button', { name: 'Resume motion', exact: true }).click();
+  await page.getByRole('button', { name: 'Resume motion', exact: true }).focus();
+  await page.keyboard.press('Space');
+  assert.equal(await page.locator('.portrait-wrap').getAttribute('aria-pressed'), 'false');
   await page.evaluate(() => scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' }));
   await page.waitForFunction(() => !document.querySelector('.intro-copy').classList.contains('is-visible'));
   await page.evaluate(() => scrollTo({ top: 0, behavior: 'instant' }));
