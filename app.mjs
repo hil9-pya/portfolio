@@ -5,6 +5,11 @@ const icon = name => `<svg aria-hidden="true"><use href="assets/icons.svg#${name
 const link = (href, label, className = '') => `<a class="text-link ${className}" href="${escape(href)}" target="_blank" rel="noopener noreferrer">${escape(label)} <span aria-hidden="true">↗</span></a>`;
 
 let manualTheme = null;
+document.querySelector('.motion-toggle').addEventListener('click', event => {
+  const paused = document.documentElement.classList.toggle('motion-paused');
+  event.currentTarget.setAttribute('aria-pressed', String(paused));
+  event.currentTarget.textContent = paused ? 'Resume motion' : 'Pause motion';
+});
 try {
   const stored = localStorage.getItem('portfolio-theme');
   if (stored === 'light' || stored === 'dark') manualTheme = stored;

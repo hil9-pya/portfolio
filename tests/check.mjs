@@ -16,6 +16,11 @@ try {
   await page.waitForFunction(() => document.querySelector('.portrait')?.naturalWidth > 0);
   await page.waitForFunction(() => getComputedStyle(document.querySelector('.intro-copy')).opacity === '1');
   assert(await page.locator('.intro-copy').evaluate(node => node.classList.contains('is-visible')));
+  await page.waitForFunction(() => document.querySelector('.portrait-wrap').classList.contains('is-visible'));
+  assert.equal(await page.locator('.portrait-wrap').evaluate(node => getComputedStyle(node).animationIterationCount), 'infinite');
+  await page.getByRole('button', { name: 'Pause motion', exact: true }).click();
+  assert.equal(await page.locator('.portrait-wrap').evaluate(node => getComputedStyle(node).animationPlayState), 'paused');
+  await page.getByRole('button', { name: 'Resume motion', exact: true }).click();
   assert.deepEqual(await page.locator('.dock a').allTextContents(), ['Me', 'Projects', 'Stack', 'Resources', 'GitHub']);
   assert.equal(await page.locator('.project-card').count(), 4);
   assert.equal(await page.locator('[data-status="upcoming"]').count(), 0);
@@ -120,6 +125,7 @@ try {
     assert.equal(await systemPage.locator('html').evaluate(node => getComputedStyle(node).scrollBehavior), 'auto');
     assert.equal(await systemPage.locator('.dock a').first().evaluate(node => getComputedStyle(node).transitionDuration), '0s');
     assert.equal(await systemPage.locator('.reveal').count(), 0, 'Reduced motion must skip scroll reveals');
+    assert.equal(await systemPage.locator('.portrait-wrap').evaluate(node => getComputedStyle(node).animationName), 'none');
     await systemContext.close();
     const emptyActivity = await browser.newPage();
     await emptyActivity.route('**/assets/contributions.json', route => route.fulfill({ contentType: 'application/json', body: JSON.stringify({ ...activityData, days: activityData.days.map(day => ({ ...day, count: 0, level: 0 })) }) }));
