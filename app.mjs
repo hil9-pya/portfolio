@@ -171,3 +171,18 @@ async function loadContributions() {
   }
 }
 await loadContributions();
+
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    }
+  }, { threshold: .08 });
+  document.querySelectorAll('.intro-copy,.portrait-wrap,.section-heading,.project-card,.stack-group,.resource-grid article,.github-heading,[data-contributions]').forEach((element, index) => {
+    element.classList.add('reveal');
+    element.style.setProperty('--reveal-delay', `${index % 2 * .08}s`);
+    revealObserver.observe(element);
+  });
+}

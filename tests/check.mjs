@@ -14,6 +14,8 @@ try {
   assert((await page.locator('.wordmark').textContent()).startsWith('ariel'));
   assert.equal(await page.locator('a[href="https://www.instagram.com/ariellcsp/"]').count(), 1);
   await page.waitForFunction(() => document.querySelector('.portrait')?.naturalWidth > 0);
+  await page.waitForFunction(() => getComputedStyle(document.querySelector('.intro-copy')).opacity === '1');
+  assert(await page.locator('.intro-copy').evaluate(node => node.classList.contains('is-visible')));
   assert.deepEqual(await page.locator('.dock a').allTextContents(), ['Me', 'Projects', 'Stack', 'Resources', 'GitHub']);
   assert.equal(await page.locator('.project-card').count(), 4);
   assert.equal(await page.locator('[data-status="upcoming"]').count(), 0);
@@ -117,6 +119,7 @@ try {
     assert.equal(await systemPage.locator('html').getAttribute('data-theme'), 'dark');
     assert.equal(await systemPage.locator('html').evaluate(node => getComputedStyle(node).scrollBehavior), 'auto');
     assert.equal(await systemPage.locator('.dock a').first().evaluate(node => getComputedStyle(node).transitionDuration), '0s');
+    assert.equal(await systemPage.locator('.reveal').count(), 0, 'Reduced motion must skip scroll reveals');
     await systemContext.close();
     const emptyActivity = await browser.newPage();
     await emptyActivity.route('**/assets/contributions.json', route => route.fulfill({ contentType: 'application/json', body: JSON.stringify({ ...activityData, days: activityData.days.map(day => ({ ...day, count: 0, level: 0 })) }) }));

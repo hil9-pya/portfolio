@@ -1,7 +1,7 @@
 export const profile = {
   name: 'Ariel Casipe',
   github: 'hil9-pya',
-  photo: 'assets/ariel.png',
+  photo: 'assets/ariel-cutout.png',
   intro: 'Aspiring software developer who loves turning ideas into web apps. I use AI-assisted development to help bring them to life, and get absorbed in refining the UI/UX until the details feel intuitive.',
 };
 
