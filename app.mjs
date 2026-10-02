@@ -53,7 +53,7 @@ document.querySelector('[data-projects]').innerHTML = projects.map(project => {
     <h3>${escape(project.title)}</h3>
     <p class="project-description">${escape(project.description)}</p>
     <p class="project-stack">${project.technologies.map(escape).join(' / ') || 'To be announced'}</p>
-    <div class="project-links">${project.repository ? `${slides.length ? '<button class="text-button view-project" type="button">View project <span aria-hidden="true">↗</span></button>' : ''}${link(project.repository, 'GitHub', 'repository')}` : '<span class="coming-soon">Coming soon</span>'}</div>
+    <div class="project-links">${project.repository ? `${slides.length ? '<button class="text-button view-project" type="button">View project <span aria-hidden="true">↗</span></button>' : ''}${link(project.repository, 'GitHub', 'repository')}` : '<span class="coming-soon">Coming soon</span>'}${project.live ? link(project.live, 'Live site', 'live-site') : ''}</div>
   </article>`;
 }).join('');
 

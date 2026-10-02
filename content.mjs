@@ -11,6 +11,7 @@ export const projects = [
     description: 'A full-stack enrollment application with admissions, student services, and a learning portal.',
     technologies: ['React', 'Tailwind CSS', 'Vite', 'Node.js', 'Express', 'MongoDB'],
     repository: 'https://github.com/hil9-pya/enrollmentsystem', status: 'available',
+    live: 'https://sia-enrollment.kesug.com/',
     screenshots: [
       { src: 'assets/projects/enrollment-home.png', alt: 'Enrollment System public NCST homepage', caption: 'Campus homepage' },
       { src: 'assets/projects/enrollment-gateway.png', alt: 'Enrollment System applicant, student, and staff sign-in gateway', caption: 'Enrollment gateway' },

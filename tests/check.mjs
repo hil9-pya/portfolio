@@ -34,6 +34,7 @@ try {
   assert.equal(await page.locator('[data-resources] a').count(), 5);
   assert.equal(await page.locator('[data-status="upcoming"] button, [data-status="upcoming"] a').count(), 0);
   assert.equal(await page.locator('[data-project-id="enrollment"] .repository').getAttribute('href'), 'https://github.com/hil9-pya/enrollmentsystem');
+  assert.equal(await page.locator('[data-project-id="enrollment"] .live-site').getAttribute('href'), 'https://sia-enrollment.kesug.com/');
   assert.equal(await page.locator('[data-project-id="kickcraft"] .repository').getAttribute('href'), 'https://github.com/hil9-pya/kickcraft');
   assert.equal(await page.locator('[data-project-id="can-it-fit"] .repository').getAttribute('href'), 'https://github.com/hil9-pya/can-it-fit');
   assert.equal(await page.locator('[data-project-id="can-it-fit"] .slide-dots button').count(), 3);
